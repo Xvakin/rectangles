@@ -1,7 +1,7 @@
 (function (global) {
     "use strict";
 
-    function NumberInput(container, context) {
+    function NumberInput(container, value, context) {
 
         if (NumberInput.prototype._singletonInstance) {
             return NumberInput.prototype._singletonInstance;
@@ -11,8 +11,8 @@
 
         this.container = container;
         this.context = context;
-
         this.numberInput = this.container.querySelectorAll('.app-rect-number')[0];
+        this.numberInput.value = value;
 
         this.update = function (number) {
             this.numberInput.value = number;

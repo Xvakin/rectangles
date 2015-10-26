@@ -6,10 +6,7 @@
     function App(container) {
         this.rectangles = this.getRectangles();
         this.rectanglesListEl = global.document.getElementById('app-rect-list');
-
-        this.numberInput = new global.rectanglesApp.NumberInput(global.document.getElementById('number-input'), this);
-
-        this.numberInput.update(this.rectangles.length);
+        this.numberInput = new global.rectanglesApp.NumberInput(global.document.getElementById('number-input'), this.rectangles.length, this);
         this.renderRectangles();
         this.bindEvents();
     }
