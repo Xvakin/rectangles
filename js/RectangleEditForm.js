@@ -1,34 +1,55 @@
 (function (global) {
     "use strict";
 
-    global.rectanglesApp = global.rectanglesApp || {};
+    function RectangleEditForm() {
 
-    global.rectanglesApp.RectangleEditForm = global.rectanglesApp.Class({
-        init: function (elementId) {
-            this.currentRect = {};
-            this.formEl = global.document.getElementById('edit-form');
-            this.bindEvents();
-        },
-        render: function () {
-            return this.formEl;
-        },
-        bindEvents: function () {
-            document.getElementsByTagName('form')[0].addEventListener('submit', this.onSubmit.bind(this));
-        },
-        showForm: function (el) {
-            el.appendChild(this.formEl);
-        },
-        setCurrentRect: function (rect) {
-            var fields = this.formEl.getElementsByTagName('input');
-            this.currentRect = rect;
-            fields.width.value = rect.width;
-            fields.height.value = rect.height;
-            fields.color.value = rect.color;
-        },
-        onSubmit: function (event) {
-            this.currentRect.update(200, 200, 'green');
-            event.preventDefault();
+        if (RectangleEditForm.prototype._singletonInstance) {
+            return RectangleEditForm.prototype._singletonInstance;
         }
-    });
 
-})(window);
+        RectangleEditForm.prototype._singletonInstance = this;
+
+        this.template = global.document.getElementById('template-rectangle-edit-form').innerHTML;
+        this.container = document.createElement('div');
+        this.container.innerHTML = this.template;
+        this.fields = this.container.getElementsByTagName('input');
+        this.rectangle = {};
+
+        this.setRectangle = function (rectangle) {
+            this.rectangle = rectangle;
+            this.fields.width.value = rectangle.params.width;
+            this.fields.height.value = rectangle.params.height;
+            this.fields.color.value = rectangle.params.color;
+        };
+
+        this.hide = function () {
+            this.container.style.display = 'none';
+        };
+
+        this.onFormSubmit = function (event) {
+            this.rectangle.update({
+                width: this.fields.width.value,
+                height: this.fields.height.value,
+                color: this.fields.color.value
+            });
+            event.preventDefault();
+        };
+
+        this.onCancelClick = function (event) {
+            this.hide();
+            event.preventDefault();
+        };
+
+        this.appendTo = function (el) {
+            el.appendChild(this.container);
+            this.container.style.display = 'block';
+        };
+
+        this.container.getElementsByTagName('form')[0].addEventListener('submit', this.onFormSubmit.bind(this));
+        this.container.querySelectorAll('.cancel')[0].addEventListener('click', this.onCancelClick.bind(this));
+    }
+
+    global.rectanglesApp = global.rectanglesApp || {};
+    global.rectanglesApp.RectangleEditForm = RectangleEditForm;
+
+}(window));

@@ -7,8 +7,8 @@
 </head>
 <body>
 <div id="app">
-    <header>
-        Number of rectangles: <input id="app-rect-number" type="text"/>
+    <header id="number-input">
+        Number of rectangles: <input class="app-rect-number" type="number"/>
     </header>
     <div id="app-rect-list"></div>
     <div>
@@ -16,22 +16,32 @@
     </div>
 </div>
 
-<div id="edit-form">
-    <form action="post">
-        <div><label>Width <input name="width" type="text"/></label></div>
-        <div><label>Height <input name="height" type="text"/></label></div>
-        <div><label>Color <input name="color" type="text"/></label></div>
-        <div>
-            <button type="submit">Save</button>
-            or <a href="">Cancel</a></div>
-    </form>
-</div>
+<script type="text/template" id="template-rectangle-edit-form">
+    <div class="rectangle-edit-form">
+        <form method="post">
+            <div><label>Width <input name="width" type="text"/></label></div>
+            <div><label>Height <input name="height" type="text"/></label></div>
+            <div><label>Color <input name="color" type="text"/></label></div>
+            <div>
+                <button type="submit">Save</button>
+                or
+                <a href="#" class="cancel">Cancel</a></div>
+        </form>
+    </div>
+</script>
 
-<script src="js/Class.js"></script>
+<script type="text/template" id="template-rectangle">
+    <div class="rectangle">
+        <div class="rectangle-block"></div>
+        <a class="rectangle-edit" href="#">Edit</a>
+        <a class="rectangle-delete" href="#">Delete</a>
+    </div>
+</script>
+
 <script src="js/App.js"></script>
+<script src="js/NumberInput.js"></script>
 <script src="js/Rectangle.js"></script>
 <script src="js/RectangleEditForm.js"></script>
-<script src="js/RectangleList.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function (event) {
         new rectanglesApp.App(document.getElementById('app'));
