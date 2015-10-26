@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rectangles</title>
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<div id="app">
+    <header>
+        Number of rectangles: <input id="app-rect-number" type="text"/>
+    </header>
+    <div id="app-rect-list"></div>
+    <div>
+        <button id="app-add-rect">Add rectangle</button>
+    </div>
+</div>
+
+<div id="edit-form">
+    <form action="post">
+        <div><label>Width <input name="width" type="text"/></label></div>
+        <div><label>Height <input name="height" type="text"/></label></div>
+        <div><label>Color <input name="color" type="text"/></label></div>
+        <div>
+            <button type="submit">Save</button>
+            or <a href="">Cancel</a></div>
+    </form>
+</div>
+
+<script src="js/Class.js"></script>
+<script src="js/App.js"></script>
+<script src="js/Rectangle.js"></script>
+<script src="js/RectangleEditForm.js"></script>
+<script src="js/RectangleList.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function (event) {
+        new rectanglesApp.App(document.getElementById('app'));
+    });
+</script>
+</body>
+</html>
