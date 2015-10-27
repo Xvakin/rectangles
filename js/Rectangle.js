@@ -5,7 +5,7 @@
         this.id = id;
         this.container = container;
         this.params = params;
-        this.template = document.getElementById('template-rectangle').innerHTML;
+        this.template = document.getElementById('app-template-rectangle').innerHTML;
         this.context = context;
         this.render();
     }
@@ -16,10 +16,10 @@
         el.style.width = this.params.width + 'px';
         el.style.height = this.params.height + 'px';
         el.style.backgroundColor = this.params.color;
-        this.container.appendChild(el);
 
-        this.container.querySelectorAll('.rectangle-edit')[0].addEventListener('click', this.onEditRectangle.bind(this));
-        this.container.querySelectorAll('.rectangle-delete')[0].addEventListener('click', this.onDeleteRectangle.bind(this));
+        this.container.querySelector('.rectangle-block  ').appendChild(el);
+        this.container.querySelector('.rectangle-edit').addEventListener('click', this.onEditRectangle.bind(this));
+        this.container.querySelector('.rectangle-delete').addEventListener('click', this.onDeleteRectangle.bind(this));
     };
 
     Rectangle.prototype.update = function (params) {

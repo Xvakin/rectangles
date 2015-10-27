@@ -4,15 +4,16 @@
     global.rectanglesApp = global.rectanglesApp || {};
 
     function App(container) {
+        this.container = container;
         this.rectangles = this.getRectangles();
-        this.rectanglesListEl = global.document.getElementById('app-rect-list');
-        this.numberInput = new global.rectanglesApp.NumberInput(global.document.getElementById('number-input'), this.rectangles.length, this);
+        this.rectanglesListEl = this.container.querySelector('.app-rectangle-list');
+        this.numberInput = new global.rectanglesApp.NumberInput(this.container.querySelector('.app-number-input'), this.rectangles.length, this);
         this.renderRectangles();
         this.bindEvents();
     }
 
     App.prototype.bindEvents = function () {
-        document.getElementById('app-add-rect').addEventListener('click', this.onAddRectangle.bind(this));
+        this.container.querySelector('.app-add-rectangle').addEventListener('click', this.onAddRectangle.bind(this));
     };
 
     App.prototype.getRectangles = function () {

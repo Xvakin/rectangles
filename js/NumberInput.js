@@ -11,7 +11,7 @@
 
         this.container = container;
         this.context = context;
-        this.numberInput = this.container.querySelectorAll('.app-rect-number')[0];
+        this.numberInput = this.container.querySelector('.app-rectangle-number');
         this.numberInput.value = value;
 
         this.update = function (number) {

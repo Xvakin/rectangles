@@ -1,7 +1,14 @@
+/* Base styles */
+
+* {
+    box-sizing: border-box;
+}
+
 body {
+    color: #555;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 16px;
-    line-height: 25px;
+    line-height: 24px;
 }
 
 a {
@@ -9,7 +16,80 @@ a {
 }
 
 input, button {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: #555;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 16px;
-    line-height: 25px;
+    height: 32px;
+    line-height: 24px;
+    padding: 4px 10px;
 }
+
+input {
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+}
+
+button {
+    cursor: pointer;
+}
+
+/* App elements */
+.app-number-input {
+    margin: 0 0 10px;
+}
+
+.app-rectangle-number {
+    width: 100px;
+}
+
+/* Rectangle block template */
+.rectangle {
+    padding: 10px 0;
+}
+
+.rectangle-block {
+    display: inline-block;
+    margin: 0 20px 0 0;
+}
+
+.rectangle-actions {
+    display: inline-block;
+    vertical-align: top;
+}
+
+/* Form temlate */
+.form {
+    padding: 0 0 10px;
+}
+
+.form-fields {
+    display: inline-block;
+    width: 200px;
+}
+
+.form-actions {
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+.form-row {
+    margin: 0 0 10px;
+}
+
+.form-row:last-child {
+    margin: 0;
+}
+
+.form-label {
+    display: inline-block;
+    padding: 0 10px 0 0;
+    width: 70px;
+}
+
+.form-input {
+    display: inline-block;
+    width: 100px;
+}
+

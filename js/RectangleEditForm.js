@@ -9,7 +9,7 @@
 
         RectangleEditForm.prototype._singletonInstance = this;
 
-        this.template = global.document.getElementById('template-rectangle-edit-form').innerHTML;
+        this.template = global.document.getElementById('app-template-edit-form').innerHTML;
         this.container = document.createElement('div');
         this.container.innerHTML = this.template;
         this.fields = this.container.getElementsByTagName('input');
