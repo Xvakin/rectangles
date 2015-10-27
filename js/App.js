@@ -1,8 +1,6 @@
 (function (global) {
     "use strict";
 
-    global.rectanglesApp = global.rectanglesApp || {};
-
     function App(container) {
         this.container = container;
         this.rectangles = this.getRectangles();
@@ -97,6 +95,7 @@
         this.numberInput.update(this.rectangles.length);
     };
 
+    global.rectanglesApp = global.rectanglesApp || {};
     global.rectanglesApp.App = App;
 
 })(window);
